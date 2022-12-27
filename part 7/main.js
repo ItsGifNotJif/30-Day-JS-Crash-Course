@@ -669,3 +669,25 @@
     }
     console.log(generateHex());
 }
+
+{
+    function randomUserID(){
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let char1 = "";
+        let char2 = "";
+        let char3 = "";
+        let char4 = "";
+        let char5 = "";
+        let char6 = "";
+        for(let i = 0; i < 2; i++){
+            char1 = characters.charAt(Math.floor(Math.random() * characters.length));
+            char2 = characters.charAt(Math.floor(Math.random() * characters.length));
+            char3 = characters.charAt(Math.floor(Math.random() * characters.length));
+            char4 = characters.charAt(Math.floor(Math.random() * characters.length));
+            char5 = characters.charAt(Math.floor(Math.random() * characters.length));
+            char6 = characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        return char1 + char2 + char3 + char4 + char5 + char6;
+    }
+    console.log(randomUserID());
+}
