@@ -661,3 +661,11 @@
     }
     console.log(randomMacAdress())
 }
+
+{
+    function generateHex(){
+        let hex = Math.floor(Math.random() * 0x10000).toString(16);
+        return hex;
+    }
+    console.log(generateHex());
+}
