@@ -706,3 +706,13 @@
 }
     console.log(generateRandomId(10, 20));
 }
+
+{
+    function rgbColorGenerator(){
+        let char1 = Math.floor(Math.random() * 255);
+        let char2 = Math.floor(Math.random() * 255);
+        let char3 = Math.floor(Math.random() * 255);
+        return "rgb" + "(" + char1 + "," + char2 + "," + char3 + ")"
+    }
+    console.log(rgbColorGenerator());
+}
