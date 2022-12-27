@@ -691,3 +691,18 @@
     }
     console.log(randomUserID());
 }
+{
+    function generateRandomId(a, b){
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let ids = [];
+    for (let i = 0; i < b; i++) {
+        let id = '';
+        for (let j = 0; j < a; j++) {
+            id += characters.charAt(Math.floor(Math.random() * characters.length));
+        }
+        ids.push(id);
+    }
+    return ids;
+}
+    console.log(generateRandomId(10, 20));
+}
