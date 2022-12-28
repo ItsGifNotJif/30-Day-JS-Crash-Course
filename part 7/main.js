@@ -641,7 +641,7 @@
 }
 
 {
-    function randomMacAdress(){
+    function randomMacAdress() {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let string1 = "";
         let string2 = "";
@@ -649,7 +649,7 @@
         let string4 = "";
         let string5 = "";
         let string6 = "";
-        for(let i = 0; i < 2; i++){
+        for (let i = 0; i < 2; i++) {
             string1 += characters.charAt(Math.floor(Math.random() * characters.length));
             string2 += characters.charAt(Math.floor(Math.random() * characters.length));
             string3 += characters.charAt(Math.floor(Math.random() * characters.length));
@@ -663,7 +663,7 @@
 }
 
 {
-    function generateHex(){
+    function generateHex() {
         let hex = Math.floor(Math.random() * 0x10000).toString(16);
         return hex;
     }
@@ -671,7 +671,7 @@
 }
 
 {
-    function randomUserID(){
+    function randomUserID() {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let char1 = "";
         let char2 = "";
@@ -679,7 +679,7 @@
         let char4 = "";
         let char5 = "";
         let char6 = "";
-        for(let i = 0; i < 2; i++){
+        for (let i = 0; i < 2; i++) {
             char1 = characters.charAt(Math.floor(Math.random() * characters.length));
             char2 = characters.charAt(Math.floor(Math.random() * characters.length));
             char3 = characters.charAt(Math.floor(Math.random() * characters.length));
@@ -692,27 +692,38 @@
     console.log(randomUserID());
 }
 {
-    function generateRandomId(a, b){
+    function generateRandomId(a, b) {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
         let ids = [];
-    for (let i = 0; i < b; i++) {
-        let id = '';
-        for (let j = 0; j < a; j++) {
-            id += characters.charAt(Math.floor(Math.random() * characters.length));
+        for (let i = 0; i < b; i++) {
+            let id = '';
+            for (let j = 0; j < a; j++) {
+                id += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            ids.push(id);
         }
-        ids.push(id);
+        return ids;
     }
-    return ids;
-}
     console.log(generateRandomId(10, 20));
 }
 
 {
-    function rgbColorGenerator(){
+    function rgbColorGenerator() {
         let char1 = Math.floor(Math.random() * 255);
         let char2 = Math.floor(Math.random() * 255);
         let char3 = Math.floor(Math.random() * 255);
         return "rgb" + "(" + char1 + "," + char2 + "," + char3 + ")"
     }
     console.log(rgbColorGenerator());
+}
+
+{
+    function arrayOfHexaColors() {
+        let char1 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
+        let char2 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
+        let char3 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
+        let completeHex = '#' + char1 + char2 + char3;
+        return completeHex;
+    }
+    console.log(arrayOfHexaColors())
 }
