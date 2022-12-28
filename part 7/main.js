@@ -718,12 +718,30 @@
 }
 
 {
-    function arrayOfHexaColors() {
-        let char1 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
-        let char2 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
-        let char3 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
-        let completeHex = '#' + char1 + char2 + char3;
-        return completeHex;
+    function arrayOfHexaColors(a) {
+        let array = [];
+        for (let i = 0; i < a; i++) {
+            let char1 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
+            let char2 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
+            let char3 = ('0' + Math.floor(Math.random() * 255).toString(16)).slice(-2);
+            let completeHex = '#' + char1 + char2 + char3;
+            let hexArray = array.push(completeHex);
+        }return array;
     }
-    console.log(arrayOfHexaColors())
+    console.log(arrayOfHexaColors(10))
 }
+
+{
+    function arrayOfRGBColors(a) {
+        let array = [];
+        for (let i = 0; i < a; i++) {
+            let char1 = ('0' + Math.floor(Math.random() * 255));
+            let char2 = ('0' + Math.floor(Math.random() * 255));
+            let char3 = ('0' + Math.floor(Math.random() * 255));
+            let completeHex = "rgb" + "(" + char1 + "," + char2 + "," + char3 + ")"
+            let hexArray = array.push(completeHex);
+        }return array;
+    }
+    console.log(arrayOfRGBColors(10))
+}
+
