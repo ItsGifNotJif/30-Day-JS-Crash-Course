@@ -246,8 +246,86 @@ let b = 10; // Global scope object, accessible anywhere within the file;
     }
     console.log(person);
     console.log(person.getPersonInfo());
-} 
+}
 
 {
     //Object Methods
+
+    //Object.assign method  - copies the object without modifying the original object.
+    const person = {
+        firstName: "Dorian",
+        lastName: "Ashgray",
+        age: 28,
+        country: "Japan",
+        city: "Tokyo",
+        skills: [
+            "HTML",
+            "CSS",
+            "Javascript",
+            "React",
+            "Node.js",
+            "MongoDB",
+            "Python",
+            "D3.js"
+        ],
+        address: {
+            street: "2 Chome-3-1 Asakusa, Taito City, Tokyo 111-0032, Japan",
+            poBox: "PQ7W+WM Taito City",
+            city: "Tokyo"
+
+        },
+        getPersonInfo: function () {
+            return `I am ${this.firstName}, I live in ${this.country}. I am ${this.age}. I really like ${this.city}`
+        },
+        phoneNumber: "+5448443444198",
+        isMarried: true,
+    }
+
+    const copyPerson = Object.assign({}, person)  //Copies "person" object to a new variable "copyPerson"
+    console.log(copyPerson);
+
+    //Object.keys - gets the keys or properties of an object as an array
+    const keys = Object.keys(copyPerson);
+    console.log(keys);
+    const address = Object.keys(copyPerson.address);
+    console.log(address)
+
+    //Object.values - gets the values of a an object as an array
+    const values = Object.values(copyPerson);
+    console.log(values);
+
+    //Object.entries - gets keys AND values from an object as an array
+    const entries = Object.entries(copyPerson);
+    console.log(entries);
+
+    //hasOwnProperty - checks if specific key or property exists within object. Returns a "true" or "false" boolean as an answer
+    console.log(copyPerson.hasOwnProperty("score"));
+    console.log(copyPerson.hasOwnProperty("city"));
+    console.log(copyPerson.hasOwnProperty("Tokyo"));
+}
+
+{
+    const dog = {
+        name: "Cerberus",
+        legs: 4,
+        color: "Ice White",
+        bark: function () {
+            return "Woof woof"
+        }
+    }
+    console.log(dog);
+
+    const getValues = Object.values(dog);
+    console.log(getValues);
+    console.log(dog.name)
+    console.log(dog.legs)
+    console.log(dog.color)
+    console.log(dog.bark())
+
+    dog.breed = "Hellhound",
+    dog.getDogInfo = function(){
+        let statement = `${this.name}, ${this.legs}, ${this.breed}, ${this.color}`
+        return statement;
+    }
+    console.log(dog.getDogInfo())
 }
