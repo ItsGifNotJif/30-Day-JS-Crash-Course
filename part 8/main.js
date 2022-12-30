@@ -383,6 +383,22 @@ let b = 10; // Global scope object, accessible anywhere within the file;
         }
     }
 
+    let loggedUsers = 0;
+    for (const name in users) {
+        if (users[name].isLoggedIn) {
+            loggedUsers += 1;
+        }
+    }
+    console.log(loggedUsers);
+
+    let usersWithMaxPoints = 0;
+    for (const point in users) {
+        if (users[point].points >= 50) {
+            usersWithMaxPoints += 1;
+        }
+    }
+    console.log(usersWithMaxPoints);
+
 
     let manySkills = 0;
     let userMaxSkills;
@@ -395,5 +411,28 @@ let b = 10; // Global scope object, accessible anywhere within the file;
     }
     console.log(`user with most skills is ${userMaxSkills}`)
 
+    let copiedObject = Object.assign({}, users);
+    copiedObject.name = "Dorian"
+    console.log(copiedObject);
 
+    const keys = Object.keys(copiedObject);
+    console.log(keys);
+
+    const values = Object.values(copiedObject);
+    console.log(values);
 }
+
+{
+    let countries = {
+        country: "Japan",
+        capital: "Tokyo",
+        population: "125 million",
+        languages: "Japanese",
+        getCountry: function () {
+            return `Country of ${this.country} has a capitol called ${this.capital}, and ${this.population} of people live in this country. National language is ${this.languages}`;
+        }
+    }
+    console.log(countries.getCountry())
+}
+
+
