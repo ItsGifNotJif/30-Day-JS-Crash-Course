@@ -1,0 +1,1 @@
+//Higher order functions - functions that take other functions as parameters or return functions as a value. The function passed as a parameter is called a "Callback"
