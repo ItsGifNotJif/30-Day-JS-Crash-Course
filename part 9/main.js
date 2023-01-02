@@ -264,5 +264,97 @@
 
     const score = scores.find((user) => user.score > 80)
     console.log(score);
+}
+
+{
+    //.findIndex method. Returns the position of the first element that satisfies a condition
+    const names = ["Dorian", "Ashgray", "Elric", "Erekose", "Jack", "John"]
+    const ages = [24, 22, 25, 32, 35, 18, 4, 2, 1, 42, 22, 11]
+    const result = names.findIndex((name) => name == "Elric")
+    console.log(result)
+    const namesLongerThan5 = names.findIndex((name) => name.length > 5)
+    console.log(namesLongerThan5);
+    const agesBelow20 = ages.findIndex((age) => age < 20);
+    console.log(agesBelow20);
+}
+
+{
+    //.some method. Checks if some of the elements are similar in one aspect. Returns a boolean.
+    const names = ["Dorian", "Ashgray", "Elric", "Erekose", "Jack", "John"]
+    const bools = [true, true, true, true, true, true]
+
+    const areSomeTrue = bools.some((name) => name === true);
+    console.log(areSomeTrue)
+
+    const areSomeNamesStrings = names.some((name) => typeof name == "number");
+    console.log(areSomeNamesStrings);
+}
+
+{
+    /*.sort method
+    Arranges the array elements in either ascending or descending order. By default, sort() sorts elements as strings, in ascending order. Modifies the original array.
+    */
+    const products = ['Milk', 'Coffee', 'Sugar', 'Honey', 'Apple', 'Carrot']
+    console.log(products.sort());
+
+    /*Sorting numeric values (numbers). By default, sorts elements in ascending order. Considers numeric values as strings, so [2, 4, 100] would be sorted as [100, 2, 4].
+    To sort by actual numeric value, not by string, a function has to be called on sorted elements to compare their values */
+    const numbers = [9.81, 10, 22, -42, 12, 2442, 3.14]
+    console.log(numbers.sort())  //sorts values by default sorting parameters, in ascending order, with elements treated as strings.
+    numbers.sort(function (a, b) {
+        return a - b                // compares values in indicated array as actual numbers, not as strings, returns values in ascending order (a - b)
+    })
+    console.log(numbers)
+
+    numbers.sort(function (a, b) {
+        return b - a                // compares values in indicated array as actual numbers, not as strings, by changing order of parameters in comparison, changes sorting direction to descending value sort (b - a)
+    })
+    console.log(numbers);
+}
+{
+    /*Object arrays themselves can be sorted, by comparing object keys. */
+    // objArr.sort(function (a, b) {
+    //     if (a.key < b.key) return -1
+    //     if (a.key > b.key) return 1
+    //     return 0
+    // })
+
+    //or
+
+    // objArr.sort(function (a, b) {
+    //     if (a["key"] < b["key"]) return -1
+    //     if (a["key"] > b["key"]) return 1
+    //     return 0
+    // })
+
+    const users = [
+        { name: 'Asabeneh', age: 150 },
+        { name: 'Brook', age: 50 },
+        { name: 'Eyob', age: 100 },
+        { name: 'Elias', age: 22 },
+    ]
+    users.sort((a, b) => {
+        if (a.age < b.age) return -1
+        if (a.age > b.age) return 1
+        return 0
+    })
+    console.log(users)  //sorts in ascending order
+}
+
+{
+    const countries = ['Finland', 'Sweden', 'Denmark', 'Norway', 'IceLand']
+    const names = ['Asabeneh', 'Mathias', 'Elias', 'Brook']
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const products = [
+        { product: 'banana', price: 3 },
+        { product: 'mango', price: 6 },
+        { product: 'potato', price: ' ' },
+        { product: 'avocado', price: 8 },
+        { product: 'coffee', price: 10 },
+        { product: 'tea', price: '' },
+    ]
+}
+
+{
     
 }
