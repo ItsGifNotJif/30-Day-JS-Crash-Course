@@ -98,7 +98,7 @@
     //These built-in methods are: forEach, map, filter, reduce, find, every, some, sort
 }
 {
-    //forEach. Iterates over array elements. Only used with arrays. Takes callback function with elements, index parameter and array itself. Index and array are optional
+    //.forEach method. Iterates over array elements. Only used with arrays. Takes callback function with elements, index parameter and array itself. Index and array are optional
     // arr.forEach(function (element, index, arr) {
     //     console.log(index, element, arr);
     // })
@@ -136,7 +136,7 @@
 }
 
 {
-    //map method. Executes action on every element in an array, and returns a new array with final values. Takes callback function with element, index, array parameters and returns a new array from that
+    //.map method. Executes action on every element in an array, and returns a new array with final values. Takes callback function with element, index, array parameters and returns a new array from that
     //     const modifiedArray = arr.map(function (element, index, arr) {
     //         return element
     //     })
@@ -179,4 +179,90 @@
 
     const countriesFirstThreeLetters = countries.map((country) => country.slice(0, 3).toUpperCase());
     console.log(countriesFirstThreeLetters);
+}
+
+{
+    const countries = [
+        'Albania',
+        'Bolivia',
+        'Canada',
+        'Denmark',
+        'Ethiopia',
+        'Finland',
+        'Germany',
+        'Hungary',
+        'Ireland',
+        'Japan',
+        'Kenya',
+    ]
+    //.filter array method. Filters out items which fulfill filter conditions, and returns a new array.
+    //Filter countries containing land 
+    const countriesContainingLand = countries.filter((country) =>
+        country.includes("land"));
+    console.log(countriesContainingLand);
+
+    const countriesHaveFiveLetters = countries.filter((country) =>
+        country.length === 5)
+    console.log(countriesHaveFiveLetters);
+
+    const countriesEndsByia = countries.filter((country) => country.endsWith("ia"));
+    console.log(countriesEndsByia);
+
+    const scores = [
+        { name: 'Asabeneh', score: 95 },
+        { name: 'Lidiya', score: 98 },
+        { name: 'Mathias', score: 80 },
+        { name: 'Elias', score: 50 },
+        { name: 'Martha', score: 85 },
+        { name: 'John', score: 100 },
+    ]
+
+    const scoresGreaterThanEighty = scores.filter((score) => score.score > 80)
+    console.log(scoresGreaterThanEighty);
+}
+
+{
+    //.reduce method. Reduce takes a callback function and applies it to an iterable, reducing it to a single value. 
+    /* Applies the function to first two elements of the iterable, then applies to the result of that operation and so on ujtil the end of iterable
+    reduce has (accumulator) as the first parameter, and (currentValue) as the second parameter. It will iterate first over these two parameters, then over the result of these to parameters
+    It's advisable to declare intial value of the accumulator, otherwise first value of an array will be taken as de-facto initial value */
+    // arr.reduce((accumulator, currentValue) =>{
+    //executable code goes into execution block
+    //     return
+    // }, intialValue)
+
+    const numbers = [1, 2, 3, 4, 5, 6, 8]
+    const sum = numbers.reduce((acc, cur) => acc + cur, 0)
+    console.log(sum)
+}
+
+{
+    //.every method. Checks if all elements are similar in one aspect. It returns a boolean
+    const names = ["Dorian", "Ashgray", "Elric", "Erekose"]
+    const areAllStrings = names.every((name) => typeof name == 'string');
+    console.log(areAllStrings)
+}
+
+{
+    //.find method. Returns the first element which satisfies a condition.
+
+    const ages = [24, 22, 25, 32, 35, 18, 4, 2, 1, 42, 22, 11]
+    const agesBelow20 = ages.find((age) => age < 20);
+    console.log(agesBelow20);
+
+    const names = ["Dorian", "Ashgray", "Elric", "Erekose", "Jack", "John"]
+    const result = names.find((name) => name.length > 7)
+    console.log(names);
+
+    const scores = [
+        { name: 'Asabeneh', score: 95 },
+        { name: 'Mathias', score: 80 },
+        { name: 'Elias', score: 50 },
+        { name: 'Martha', score: 85 },
+        { name: 'John', score: 100 },
+    ]
+
+    const score = scores.find((user) => user.score > 80)
+    console.log(score);
+    
 }
