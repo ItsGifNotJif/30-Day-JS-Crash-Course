@@ -356,5 +356,114 @@
 }
 
 {
-    
+    const countries = ['Finland', 'Sweden', 'Denmark', 'Norway', 'Iceland']
+    const names = ['Asabeneh', 'Mathias', 'Elias', 'Brook']
+    const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    const products = [
+        { product: 'banana', price: 3 },
+        { product: 'mango', price: 6 },
+        { product: 'potato', price: ' ' },
+        { product: 'avocado', price: 8 },
+        { product: 'coffee', price: 10 },
+        { product: 'tea', price: '' },
+    ]
+
+    function callback() {
+
+    }
+    console.log(countries.forEach((country) => {
+        console.log(country)
+    }))
+
+    console.log(names.forEach((name) => {
+        console.log(name);
+    }))
+
+    console.log(numbers.forEach((number) => {
+        console.log(number)
+    }))
+
+    let uppercaseCountries = countries.map(function (country) {
+        return country.toUpperCase()
+    })
+    console.log(uppercaseCountries);
+
+    let countriesLength = countries.map(function (country) {
+        return country.length
+    })
+    console.log(countriesLength);
+
+    let squaredNumbers = numbers.map(function (num) {
+        return num * num
+    })
+    console.log(squaredNumbers);
+
+    let uppercaseNames = names.map(function (name) {
+        return name.toUpperCase()
+    })
+    console.log(uppercaseNames);
+
+    let prices = products.map(product => product.price)
+    console.log(prices);
+
+    let countriesLand = countries.filter((country) =>
+        country.includes("land")
+    )
+    console.log(countriesLand);
+
+    let countriesSixLetters = countries.filter((country) =>
+        country.length == 6)
+    console.log(countriesSixLetters);
+
+    let countriesSixOrMore = countries.filter((country) =>
+        country.length >= 6)
+    console.log(countriesSixOrMore);
+
+    let countriesStartWithE = countries.filter((country) =>
+        country.startsWith("E"))
+    console.log(countriesStartWithE);
+
+    let priceWithValues = products.filter((product) =>
+        typeof product.price == "number")
+    console.log(priceWithValues);
+
+
+    function getStringLists(arr) {
+        return toString(arr);
+    }
+
+    let numberSum = numbers.reduce((acc, cur) => acc + cur)
+    console.log(numberSum);
+
+    let sentence = countries.reduce((acc, country, index) => {
+        if (index === countries.length - 2) {
+            return `${acc}${country} and `
+        } else if (index === countries.length - 1) {
+            return `${acc}${country} are north European Countries.`
+        } else {
+            return `${acc}${country}, `
+        }
+    }, "Estonia, ");
+    console.log(sentence)
+
+    let checkNames = countries.some((name) => name.length > 7);
+    let checkNames2 = countries.some((name) => name.length < 7);
+    console.log(checkNames);
+    console.log(checkNames2);
+
+    let checkCountriesForLand = countries.every((country) => country.includes("land"));
+    console.log(checkCountriesForLand);
+
+    let countryAtSix = countries.find((country) => country.length = 6)
+    console.log(countryAtSix)
+
+    let indexOfCountrySix = countries.findIndex((country) => country.length = 6)
+    console.log(indexOfCountrySix)
+
+    let indexNorway = countries.findIndex((country) => country === "Norway")
+    console.log(indexNorway)
+
+    let indexRussia = countries.findIndex((country) => country === "Russia")
+    console.log(indexRussia)
 }
+
