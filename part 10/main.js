@@ -209,5 +209,46 @@
 }
 
 {
+    const aSetOfValues = new Set();
 
+    for (let i = 0; i < 10; i++) {
+        aSetOfValues.add(i)
+    }
+    console.log(aSetOfValues);
+
+    aSetOfValues.delete(2);
+    console.log(aSetOfValues);
+
+    aSetOfValues.clear()
+    console.log(aSetOfValues)
+
+    let array = ["one", "two", "three", "four", "five"]
+    let arraySet = new Set(array);
+
+
+    const countries1 = ['Finland', 'Sweden', 'Norway']
+    const countriesMap = new Map()
+
+    for (let i = 0; i < countries1.length; i++) {
+        countriesMap.set(countries1[i], countries1[i].length)
+    }
+
+    console.log(countriesMap);
+
+    const a = [4, 5, 8, 9]
+    const b = [3, 4, 5, 7]
+    let c = [...a, ...b]
+
+    let A = new Set(a)
+    let B = new Set(b)
+    let unionAB = new Set(c)
+    console.log(unionAB)
+
+    let intersectionAB = a.filter((num) => B.has(num))
+    let intersected = new Set(intersectionAB)
+    console.log(intersected);
+
+    let difference = a.filter((num) => !B.has(num))
+    let differenceAB = new Set(difference)
+    console.log(differenceAB)
 }
