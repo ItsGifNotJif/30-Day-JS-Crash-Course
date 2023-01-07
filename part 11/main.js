@@ -373,7 +373,7 @@
             dataScienceSkills: [...skills, { name: 'SQL' }]
         };
     });
-
+    
     console.log(newStudents)
 
 
