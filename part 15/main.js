@@ -363,10 +363,10 @@
     Child class can also have its own properties and methods, overriding or extending ones from inherited the parent class.
     Inheritance is used to reduce the repetition of code. */
 
-    // //syntax
-    // class ChildClassName extends{
-    //     //code to be executed goes into code block
-    // }
+    //syntax
+    class ChildClassName extends{
+        //code to be executed goes into code block
+    }
 
     class Person {                  //This is the parent class, one from which child class will inherit properties and methods
         constructor(firstName, lastName, age, country, city) {
