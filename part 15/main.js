@@ -356,3 +356,244 @@
     console.log(Person.showDateTime())
 
 }
+
+{
+    /*Inheritance. Classes can inherit from other classes, allowing them to access properties and methods of the parent class. 
+    To inherit class, "extends" keyword is used. 
+    Child class can also have its own properties and methods, overriding or extending ones from inherited the parent class.
+    Inheritance is used to reduce the repetition of code. */
+
+    // //syntax
+    // class ChildClassName extends{
+    //     //code to be executed goes into code block
+    // }
+
+    class Person {                  //This is the parent class, one from which child class will inherit properties and methods
+        constructor(firstName, lastName, age, country, city) {
+            this.firstName = firstName
+            this.lastName = lastName
+            this.age = age
+            this.country = country
+            this.city = city
+            this.score = 0
+            this.skills = []
+        }
+        getFullName() {
+            const fullName = this.firstName + ' ' + this.lastName
+            return fullName
+        }
+        get getScore() {
+            return this.score
+        }
+        get getSkills() {
+            return this.skills
+        }
+        set setScore(score) {
+            this.score += score
+        }
+        set setSkill(skill) {
+            this.skills.push(skill)
+        }
+        getPersonInfo() {
+            let fullName = this.getFullName()
+            let skills =
+                this.skills.length > 0 &&
+                this.skills.slice(0, this.skills.length - 1).join(', ') +
+                ` and ${this.skills[this.skills.length - 1]}`
+
+            let formattedSkills = skills ? `He knows ${skills}` : ''
+
+            let info = `${fullName} is ${this.age}. He lives ${this.city}, ${this.country}. ${formattedSkills}`
+            return info
+        }
+        static favoritSkill() {
+            const skills = ["HTML", "CSS", "JS", "React", "Python", "Node"]
+            const index = Math.floor(Math.random() * skills.length)
+            return skills[index]
+        }
+        static showDateTime() {
+            let now = new Date()
+            let year = now.getFullYear()
+            let month = now.getMonth() + 1
+            let date = now.getDate()
+            let hours = now.getHours()
+            let minutes = now.getMinutes()
+            if (hours < 10) {
+                hours = '0' + hours
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes
+            }
+
+            let dateMonthYear = date + '.' + month + '.' + year
+            let time = hours + ':' + minutes
+            let fullTime = dateMonthYear + ' ' + time
+            return fullTime
+        }
+    }
+
+
+    class Student extends Person {                              //Child "student" class "extends" (inherits) methods/peoperties from parent class "Person"
+        saySomething() {
+            return "I am a child of the parent class (superclass) Person"
+        }
+    }
+
+    const student1 = new Student("Dorian", "Ashgray", 28, "Japan", "Tokyo")
+    console.log(student1)
+    console.log(student1.saySomething())
+    console.log(student1.getFullName())
+    console.log(student1.getPersonInfo())
+}
+
+{
+    /*Overriding methods. Method overriding is a way to implement a method that is defined in superclass "parent class" in a subclass "child class".
+    When a method is overriden, the subclass "childclass" can define its own implementation of said method, instead of using implementation inherited from superclass "parent class"
+    This is useful when child class needs to inherit all properties of parent class, but also needs to implement some specific methods differently than parent class.
+    To customize the methods and to add additional properties to subsclass "child class", a constructor function has to be used. 
+    Inside constructor function, a super-function is called (reference to parent class) to access properties of parent class "super class" */
+
+
+    class Person {                  //This is the parent class, one from which child class will inherit properties and methods. This can also be called "superclass" in terms of inheritance and overriding methods.
+        constructor(firstName, lastName, age, country, city) {
+            this.firstName = firstName
+            this.lastName = lastName
+            this.age = age
+            this.country = country
+            this.city = city
+            this.score = 0
+            this.skills = []
+        }
+        getFullName() {
+            const fullName = this.firstName + ' ' + this.lastName
+            return fullName
+        }
+        get getScore() {
+            return this.score
+        }
+        get getSkills() {
+            return this.skills
+        }
+        set setScore(score) {
+            this.score += score
+        }
+        set setSkill(skill) {
+            this.skills.push(skill)
+        }
+        getPersonInfo() {
+            let fullName = this.getFullName()
+            let skills =
+                this.skills.length > 0 &&
+                this.skills.slice(0, this.skills.length - 1).join(', ') +
+                ` and ${this.skills[this.skills.length - 1]}`
+
+            let formattedSkills = skills ? `He knows ${skills}` : ''
+
+            let info = `${fullName} is ${this.age}. He lives ${this.city}, ${this.country}. ${formattedSkills}`
+            return info
+        }
+        static favoritSkill() {
+            const skills = ["HTML", "CSS", "JS", "React", "Python", "Node"]
+            const index = Math.floor(Math.random() * skills.length)
+            return skills[index]
+        }
+        static showDateTime() {
+            let now = new Date()
+            let year = now.getFullYear()
+            let month = now.getMonth() + 1
+            let date = now.getDate()
+            let hours = now.getHours()
+            let minutes = now.getMinutes()
+            if (hours < 10) {
+                hours = '0' + hours
+            }
+            if (minutes < 10) {
+                minutes = '0' + minutes
+            }
+
+            let dateMonthYear = date + '.' + month + '.' + year
+            let time = hours + ':' + minutes
+            let fullTime = dateMonthYear + ' ' + time
+            return fullTime
+        }
+    }
+
+    class Student extends Person {
+        constructor(firstName, lastName, age, country, city, gender) {
+            super(firstName, lastName, age, country, city)
+            this.gender = gender
+        }
+        saySomething() {
+            return "I am a child of the parent class (superclass) Person"
+        }
+        getPersonInfo() {
+            let fullName = this.getFullName()
+            let skills =
+                this.skills.length > 0 &&
+                this.skills.slice(0, this.skills.length - 1).join(",") +
+                `and ${this.skills[this.skills.length - 1]}`
+
+            let formattedSkills = skills ? `He knows ${skills}` : ""
+            let pronoun = this.gender == "Male" ? "He" : "She"
+
+            let info = `${fullName} is ${this.age}. ${pronoun} lives in ${this.city}, ${this.country}. ${formattedSkills} `
+            return info
+        }
+    }
+
+    const student1 = new Student("Elric", "Melnibone", 70, "Mordor", "Middle-Earth", "Male")
+    const student2 = new Student("Gandalf", "Mayar", 1000, "Void", "Shire")
+    student1.setScore = 1;
+    student1.setSkill = "HTML"
+    student1.setSkill = "CSS"
+    student1.setSkill = "JS"
+
+    student2.setScore = 2;
+    student2.setSkill = "MongoDB"
+    student2.setSkill = "SCSS"
+    student2.setSkill = "React"
+
+    console.log(student1)
+
+    console.log(student1.saySomething())
+    console.log(student1.getFullName())
+    console.log(student1.getPersonInfo())
+
+
+
+    console.log(student2.saySomething())
+    console.log(student2.getFullName())
+    console.log(student2.getPersonInfo())
+}
+
+
+{
+    class Animal {
+        constructor(name, age, color, legs) {
+            this.name = name,
+                this.age = age,
+                this.color = color,
+                this.legs = legs
+        }
+        saySomething() {
+            return "some sound an animal makes"
+        }
+    }
+
+
+    class Dog extends Animal { }
+    const dog = new Dog("Bethoven", 12, "White", "4")
+
+    class Cat extends Animal { 
+        saySomething(){
+            return "Cat actually meows"
+        }
+    }
+    const cat = new Cat("Garfield", 5, "black", "4")
+
+    console.log(dog)
+    console.log(dog.saySomething())
+    console.log(cat)
+    console.log(cat.saySomething())
+
+}
