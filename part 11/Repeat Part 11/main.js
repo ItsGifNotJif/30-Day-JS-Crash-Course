@@ -207,4 +207,88 @@
 
     console.log(num1, num2, num3)
     console.log(rest)
+
+    const countries = [
+        "Germany",
+        "France",
+        "Belgium",
+        "England",
+        "Finland",
+        "Sweden",
+        "Norway",
+        "Denmark",
+        "Iceland"
+    ]
+
+    let [germ, fra, , ...nordicCountries] = countries
+    console.log(germ)
+    console.log(fra)
+    console.log(nordicCountries)
+}
+
+{
+    //Spread operator to copy array
+    const evens = [0, 2, 4, 6, 8, 10]
+    const evenNumbers = [...evens]
+
+    const odds = [1, 3, 5, 7, 9]
+    const oddNumbers = [...odds]
+
+    const wholeNumbers = [...evens, ...odds]
+
+    console.log(evenNumbers)
+    console.log(oddNumbers)
+    console.log(wholeNumbers)
+
+    const frontEnd = ["HTML", "CSS", "JS", "React"]
+    const backEnd = ["Node", "Express", "MongoDB"]
+    const fullstack = [...frontEnd, ...backEnd]
+
+    console.log(frontEnd)
+    console.log(backEnd)
+    console.log(fullstack)
+}
+
+
+{
+    //Spread operator to copy object
+
+    const user = {
+        name: "Dorian",
+        title: "Student",
+        country: "Lithuania",
+        city: "Vilnius"
+    }
+    const copiedUser = { ...user }
+
+    console.log(copiedUser)
+}
+
+{
+    //Modifying or changing the object while copying 
+
+    const user = {
+        name: "Dorian",
+        title: "Student",
+        country: "Lithuania",
+        city: "Vilnius"
+    }
+
+    const copiedUser = { ...user, title: "programmer" }   //changes the value of "title" 
+    console.log(copiedUser)
+}
+
+{
+    //Spread operator with arrow function. 
+    //To create an arrow function with unlimited arguments, spread operator has to be used. 
+
+    const sumAllNums = (...args) => {
+        let sum = 0;
+        for (const num of args) {
+            sum += num
+        }
+        return sum
+    }
+    console.log(sumAllNums(1, 2, 3, 4, 5))  //returns the sum of all provided numbers by passing them to "sumAllNums" function 
+
 }
