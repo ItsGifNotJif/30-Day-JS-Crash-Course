@@ -93,7 +93,7 @@
     "^" - starts with. Any pattern that starts with indicated character or string. r'^substring' e.g. r'^javascript' matches only patterns that start with "javascript"
     "[^]" - negates character class. Matches any character except the one indicated. e.g. [^ABC] matches any character in the pattern that ISN'T "A" or "B" or "C"
 
-    "&" - ends with. Any substring that ends with indicated character or string. r'javascript&' replaces any patterns that end with "javascript"
+    "$" - ends with. Any substring that ends with indicated character or string. r'javascript$' replaces any patterns that end with "javascript"
     "*" - zero or more times. Means the match is optional, but can either not occur, or occur many times
     "+" - one or more times. Means the match occurs once or many times, but AT LEAST once
     "?" - zero or one time. Means the match either doesn't occur, or only occurs once.
@@ -111,6 +111,7 @@
     //Square brackets
     const pattern = "[Aa]pple"  //means either "A" or "a"
     const txt = "Apple and banana are fruits. An old cliche says an apple a day keeps doctor away has been replaced by a banana a day keeps the doctor far far away."
+    const txt2 = "Apple and banana are fruits. An old cliche says an apple a day keeps doctor away has been replaced by a banana a day keeps the doctor far far away. Bananas are easy too eat, too."
     const matches = txt.match(pattern)
 
     console.log(matches)
@@ -120,4 +121,108 @@
     const matches1 = txt.match(pattern1)
     console.log(matches1)
 
+    const pattern2 = /[Aa]pple|[Bb]anana/g  //means either "A" or "a", "B" or "b", and either "apple" or "banana"
+    const matches2 = txt2.match(pattern2)
+    console.log(matches2)
+}
+
+{
+    //Escape characters in RegExp "\"
+    const pattern = /\d/g  // "d" is a special character meaning digits, with global flag
+    const txt = "This regular expression example was made in May 12, 2023"
+    const matches = txt.match(pattern)
+    console.log(matches)                //logs all found digits
+
+    const pattern2 = /\d+/g //"d" is a special character meaning digits, "+" means once or more, with global flag
+    const matches2 = txt.match(pattern2)
+    console.log(matches2)  //logs all found matches that occur once or more times
+
+
+    //Period (.)
+    const pattern3 = /[a].+/g  //matches any pattern that starts with "a", and is followed by one or more of any character, except new line character, with global flag. Starts with the first match found
+    const txt2 = "Apples and bananas are fruits"
+    const matches3 = txt2.match(pattern3)
+    console.log(matches3)
+
+    //Zero or more times (*)
+    const pattern4 = /[a].*/g //matches any pattern that starts with "a", and is followed by zero or more occurences of any other character, except newline character, with global flag. Starts with the first match found.
+    const matches4 = txt2.match(pattern4)
+    console.log(matches4)
+
+    //Zero or one times (?)
+    const txt3 = "I am not sure if there is a convention on how to write e-mail.\
+    Some people write it email others may write it as Email or e-mail. "
+    const pattern5 = /[Ee]-?mail/g //matches any uppercase or lowercase "e", with "mail" that occurs either one time, or doesn't occur at all, with global flag
+    const matches5 = txt3.match(pattern5)
+    console.log(matches5)
+}
+
+{
+    //Quantifier in RegExp
+    //Length of substring we look for can be specified in curly brackets.
+
+    const txt = "This regular expression example was made in May 18, 2023"
+
+    //Exactly 4 character long substrings
+
+    const pattern = /\b\w{4}\b/g  //Matches a string that consists of exactly 4 characters. "\b" boundary ensures found match is not part of a bigger word. AKA this will only find words that are exactly 4 characters long.
+    const matches = txt.match(pattern)
+    console.log(matches)
+
+    //Exactly 4 characters long substrings without numbers, only letters
+    const pattern2 = /\b[a-zA-Z]{4}\b/g    //matches a string that consists of any 4 letters, isn't part of a bigger word, and it matches all occurences of such string due to "global" flag
+    const matches2 = txt.match(pattern2)
+    console.log(matches2)
+
+    //Exactly 4 characters longs substrings without letters, only digits
+    const pattern3 = /\b[0-9]{4}\b/g    //matches a string that consists of any 4 numbers, isn't part of bigger string, and matches all occurences of such strings due to "global" flag
+    const matches3 = txt.match(pattern3)
+    console.log(matches3)
+
+    //1 to 4 character long substrings, only digits, without letters
+    const pattern4 = /\d{1,4}/g    //matches only 1 to 4 digit long substrings, without letters
+    const matches4 = txt.match(pattern4)
+    console.log(matches4)
+
+}
+
+{
+    //carot ^
+    const txt = "This regular expression example was made in May 18, 2023"
+
+    //Starts with 
+    const pattern = /^This/    //only finds substrings starting with "this"
+    const match = txt.match(pattern)
+    console.log(match)
+
+    //Negation
+    const pattern2 = /[^A-Za-z,. ]+/g  //Only matches characters that AREN't uppercase/lowercase characters from "a" to "z", spaces, commas, periods.
+    const match2 = txt.match(pattern2)
+    console.log(match2)
+}
+
+{
+    //Exact matches 
+    //Finding exact match to a specified substring. Returns boolean "true" or "false" as a result."^" at the start and "$" at the end
+    let pattern = /^[A-Z][a-z]{3,12}$/;
+    let name = "Asabeneh"
+    let result = pattern.test(name)
+
+    console.log(result)
+}
+
+{
+    //Exercises
+    //1.
+    const text = "He earns 4000 euro from salary per month, 10000 euro annual bonus, 5500 euro online courses per month."
+    const pattern = /\b[0-9]{3,5}\b/g
+    const matches = text.match(pattern)
+
+    let sum = 0;  //declaring initial variable with value of 0
+    for (let i = 0; i < matches.length; i++) {      //iterating through all elemets of "matches"  
+        const currentNumber = parseInt(matches[i]);     //assigning "currentNumber" variable the value of "matches" index 
+        sum += currentNumber    //adding all values of "currentNumber" variable to "sum" variable with each iteration
+    }
+
+    console.log(sum)
 }
